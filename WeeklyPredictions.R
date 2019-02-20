@@ -77,6 +77,9 @@ teams_s <- teams_w %>% group_by(Team,Season) %>%
            mutate(Season = Season + 1) %>% filter(Season < 2019)
 teams_w <- teams_w %>% left_join(teams_s,by=c("Team","Season"))
 
+#Save final data frame. csv is uploaded.
+#write.csv(teams_w,"WeeklyTeamStats.csv",row.names = F)
+
 #Compute R^2. Metrics predict itself.
 rsquares <- teams_w %>% ungroup() %>% filter(Game > 1) %>%
             group_by(Game) %>%
